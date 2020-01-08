@@ -12,11 +12,18 @@
 
 (require "exercise-2.38.rkt")
 
+(provide
+  reverse-r
+  reverse-l)
+
 (define (reverse-r sequence)
   (fold-right
-    (lambda (x y) (append x (list y)))
+    (lambda (x acc) (append acc (list x)))
     null
     sequence))
 
 (define (reverse-l sequence)
-  (fold-left (lambda (x y) (cons y x)) null sequence))
+  (fold-left
+    (lambda (x y) (cons y x))
+    null
+    sequence))
